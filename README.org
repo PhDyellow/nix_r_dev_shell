@@ -1,0 +1,107 @@
+#+TITLE: An R development environment for Nix
+
+* Quickstart
+:PROPERTIES:
+:ID:       org:2bed88bb-fd3f-4d37-b06e-dd0648529312
+:END:
+
+The simplest way to run this is use nix-shell like:
+
+#+begin_src sh
+nix-shell r_shell.nix
+#+end_src
+
+However, using nix-shell directly doesn't protect the derivations from GC in NixOS.
+
+Use the ~nix_shell_pin.sh~ script instead:
+
+#+begin_src  sh
+/vmshare/PARA/projects/nix_shell_pin/nix_shell_pin.sh r_shell.nix ~/.nixshellgc
+#+end_src
+
+https://github.com/PhDyellow/nix-shell-pin
+
+
+* Overview
+:PROPERTIES:
+:ID:       org:b31ab96e-f3a1-4ab1-9fbe-1f718c7fb0a9
+:END:
+This repo provides the code needed to run a dedicated R development environment in Nix/NixOS.
+
+
+* Key files
+:PROPERTIES:
+:ID:       org:630ba73a-2656-4a33-9c6e-714ec7ea5b2d
+:END:
+** r_shell.nix and singularity_image.nix
+:PROPERTIES:
+:ID:       org:61ce1f25-5f17-4988-87f5-fe7788c138e5
+:END:
+These are the entry points to the R development environment.
+
+To get a shell with R and all selected packages, use
+
+#+begin_src sh
+nix-shell r_shell.nix
+#+end_src
+
+Or, if you want to protect the derivations in r_shell from being garbage collected, and you have the ~nix_shell_pin.sh~ script from https://github.com/PhDyellow/nix-shell-pin:
+
+#+begin_src  sh
+/vmshare/PARA/projects/nix_shell_pin/nix_shell_pin.sh r_shell.nix ~/.nixshellgc
+#+end_src
+
+To get a singularity container image:
+
+#+begin_src sh
+ nix build -f singularity_image.nix -o ~/r-singularity-aus-bio.img  #runs on "singularity_image.nix" in current folder
+#+end_src
+** nixpkgs_rev.nix
+:PROPERTIES:
+:ID:       org:a80e8023-d55e-41e0-a95f-990897ac2349
+:END:
+Specifies the nixpkgs version.
+
+I maintain a fork, R pull requests are not always merged in a timely manner.
+
+~url~ sets the path to the git repo.
+
+~ref~ specifies the git branch. Tags are possible here too.
+
+~rev~ the particular git revision to use.
+
+The other parts of the file don't need to be touched.
+** all_packages.nix
+:PROPERTIES:
+:ID:       org:4d3aa839-b56e-414f-bfa1-54235ea6aa5a
+:END:
+specifies the system packages that will be available in the R development environment.
+
+Names of available packages can be found by searching through the [[https://raw.githubusercontent.com/NixOS/nixpkgs/master/pkgs/top-level/all-packages.nix][NixOS pkgs set]].
+
+
+** r_packages.nix
+:PROPERTIES:
+:ID:       org:cd397dc1-aa39-40ac-b32a-5124ff817af3
+:END:
+
+Specifies the R packages that will be available in the R development environment.
+
+Names of available packages can be found by searching through the [[https://raw.githubusercontent.com/NixOS/nixpkgs/master/pkgs/development/r-modules/cran-packages.nix][NixOS R CRAN pkgs set]] and the [[https://raw.githubusercontent.com/NixOS/nixpkgs/master/pkgs/development/r-modules/bioc-packages.nix][NixOS R Bioc pkgs set]].
+** nix_r_compact_libs.nix
+:PROPERTIES:
+:ID:       org:e300e3d7-a32f-4faf-8416-61d13e02e444
+:END:
+Nix/NixOS prefers to install each package into a separate folder.
+Currently, the way R is packaged in NixOS, R packages are put in separate folders, and each package folder is added to the R_LIBS.
+The R_LIBS variable becomes truncated when too many packages are added.
+This is a wrapper around R that puts all the packages into a single folder and points R_LIBS to that folder.
+No upper limit on the number of packages.
+** packages folder
+:PROPERTIES:
+:ID:       org:09f6d173-d975-4a2a-a692-cb14c18adeb4
+:END:
+Contains nix files for R packages not in Nixpkgs.
+Usually the package is out of date on CRAN, or is github only.
+
+Only venture in here if you know Nix, or are willing to learn.
