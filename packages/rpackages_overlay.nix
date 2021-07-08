@@ -17,6 +17,7 @@ self: super:
         #
 
         ##### Development version has features I need. CRAN will catch up eventually
+        wdpar = (super.callPackage ./wdpar_github.nix {});
 
 
 
