@@ -41,13 +41,13 @@ RmkDerive {
 
   name = "wdpar";
 
-  version = "1.3.0.1";
+  version = "1.3.1.3";
 
   src = pkgs.fetchFromGitHub {
   owner = "prioritizr";
   repo = "wdpar";
-    rev = "a1022d7db5c60f52bfce26931c8cb5f7a303720b";
-    sha256 =  "1nclrzmfcrdx2m0kmww8j98rxa1pdnxjddhlr8x4fv3p04wfncc3";
+    rev = "1bd7054140df6f830474b3bb35e9954953e75624";
+    sha256 =  "1n7avrzsjnwpaanjpjs7f6q0mxs1k0yx4dyg41xggcsparpfbibi";
     fetchSubmodules = true;
   };
 
