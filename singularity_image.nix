@@ -26,6 +26,7 @@ echo "root:x:0:" > /etc/group
 mkdir -p /.singularity.d
 mkdir -p /.singularity.d/env
 echo "export LC_ALL=C" >> /.singularity.d/env/91-environment.sh
+echo "export SSL_CERT_FILE=${cacert}/etc/ssl/certs/ca-bundle.crt" >> /.singularity.d/env/91-environment.sh
 chmod ugo+x /.singularity.d/env/91-environment.sh
 touch /.singularity.d/env/94-appbase.sh
 chmod ugo+x /.singularity.d/env/94-appbase.sh
