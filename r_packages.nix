@@ -47,7 +47,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         Hotelling
         ICSNP
         rrcov
-        clustsig
+        #clustsig # currently broken
         Rfast
         fpc
 
