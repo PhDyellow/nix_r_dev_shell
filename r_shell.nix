@@ -9,14 +9,14 @@ let
   rpackages = (import ./r_packages.nix {pkgs = pkgs;}); #already in all_packages, but used here for RStudio
   allpackages = (import ./all_packages.nix {pkgs = pkgs;});
 in 
-pkgs.stdenv.mkDerivation {
+pkgs.mkShell {
   name = name;
   version = "1";
 
   nativeBuildInputs = with pkgs; [
   ];
   buildInputs = allpackages ++ [
-    (pkgs.callPackage ./nix_r_compact_libs.nix {rPa = rpackages;})
+    #(pkgs.callPackage ./nix_r_compact_libs.nix {rPa = rpackages;})
     # (pkgs.rstudioWrapper.override {
     #   packages = [
     #   ] ++ rpackages;
