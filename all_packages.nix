@@ -56,7 +56,7 @@ with pkgs;[
           iputils
           cacert
 
-          phantomjs2 ## hack for wdman, needed by wdpar
+          #phantomjs2 ## hack for wdman, needed by wdpar. Dropped wdpar because nix no longer supports phantomjs
 
           (pkgs.callPackage ./nix_r_compact_libs.nix {rPa = rpackages;})
           (rWrapper.override {
