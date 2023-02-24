@@ -3,6 +3,8 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         #SDMs and CLMS
         gradientforest
         #(pkgs.callPackage ./packages/multabund.nix {myRPackages = myRPackages;})
+        Rborist
+        ranger
 
         #personal packages
         phil_rutilities
@@ -46,16 +48,24 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         ICSNP
         rrcov
         clustsig
+        Rfast
         fpc
 
+        shiny
+        DT
+        shinythemes
+        shinyWidgets
+        magick
+        markdown
 
 
         #data sources
         sdmpredictors
         wdpar
-        robis
+        #robis#removed from CRAN
         #seaaroundus #removed from CRAN
         ncdf4
+        mapdata
 
         #simulated data
         coenocliner
@@ -99,6 +109,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         future
         future_apply
         future_callr
+        future_batchtools
         furrr
         doFuture
         randomForestSRC
@@ -155,6 +166,9 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         nvimcom
         languageserver
         lintr
+
+        #Fixing nixpkgs
+        fftwtools
 
         ##fixing RcppArmadillo
         RcppArmadillo

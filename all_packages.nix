@@ -48,17 +48,21 @@ with pkgs;[
           ## Functions to work with climate data
           cdo
           nco
-          
+
+          curl
+          wget
           openssh
+          openssl
           iputils
+          cacert
 
           phantomjs2 ## hack for wdman, needed by wdpar
 
           (pkgs.callPackage ./nix_r_compact_libs.nix {rPa = rpackages;})
-          # (rWrapper.override {
-          #     packages = [
-          #     ] ++ rpackages;
-          #   })
+          (rWrapper.override {
+              packages = [
+              ] ++ rpackages;
+            })
 
           #don't need rStudio, won't run on server anyway
           # (rstudioWrapper.override {
