@@ -105,3 +105,23 @@ Contains nix files for R packages not in Nixpkgs.
 Usually the package is out of date on CRAN, or is github only.
 
 Only venture in here if you know Nix, or are willing to learn.
+** .envrc
+:PROPERTIES:
+:ID:       org:2123944f-127b-4522-a916-9696765a28c1
+:END:
+Project direnv file, which will load in an R interpreter when you cd into the directory or open a file in the directory.
+You must have nix, direnv and lorelei installed.
+Point it to ~r_shell.nix~ with something like
+
+#+begin_src sh
+use_nix_gcrooted -k 2 -a /vmshare/PARA/projects/nix_r_dev_shell/r_shell.nix
+#+end_src
+
+where ~-k 2~ means keep 2 generations and ~-a~ means automatically figure out which files matter.
+
+More options are at
+https://github.com/shajra/direnv-nix-lorelei#sec-3
+
+I also needed to enable symlinking in VirtualBox and Windows:
+https://www.speich.net/articles/en/2018/12/24/virtualbox-6-how-to-enable-symlinks-in-a-linux-guest-os/
+https://superuser.com/questions/124679/how-do-i-create-a-link-in-windows-7-home-premium-as-a-regular-user#125981
