@@ -24,4 +24,5 @@ import (builtins.fetchGit {
         #(import ./packages/intel_mkl_overlay.nix)
         #(import ./packages/qemu_overlay.nix)
       ];
+      config = {allowUnfree= true;};
     }
