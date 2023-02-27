@@ -21,6 +21,7 @@ import (builtins.fetchGit {
       overlays = [
         (import ./packages/rpackages_overlay.nix)
         (import ./packages/gurobi_overlay.nix)
+        (import ./packages/phantomjs2_overlay.nix) # Dropped from NixPkgs for being unmaintained and insecure. Needed by wdpar though
         #(import ./packages/intel_mkl_overlay.nix)
         #(import ./packages/qemu_overlay.nix)
       ];

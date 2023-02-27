@@ -58,7 +58,11 @@ with pkgs;[
           iputils
           cacert
 
-          #phantomjs2 ## hack for wdman, needed by wdpar. Dropped wdpar because nix no longer supports phantomjs
+          phantomjs2 ## hack for wdman, needed by wdpar. Dropped wdpar because nix no longer supports phantomjs
+          #also hack for wdman, should pull in selenium
+          selenium-server-standalone
+          chromedriver
+          htmlunit-driver
 
           (pkgs.callPackage ./nix_r_compact_libs.nix {rPa = rpackages;})
           (rWrapper.override {
