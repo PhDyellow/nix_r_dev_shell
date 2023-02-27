@@ -61,7 +61,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
 
         #data sources
         sdmpredictors
-        #wdpar # makes use of insecure PhantomJS, nix no longer supports it.
+        wdpar # makes use of insecure PhantomJS, nix no longer supports it.
         #robis#removed from CRAN
         #seaaroundus #removed from CRAN
         ncdf4

@@ -39,6 +39,8 @@ with pkgs;[
 
           which #explicity include which that R compiled against, rather than fall back to system `which``, for some reason the Rshell which and system which are not identical
 
+          _7zz # used by shell scripts to minimise small files on HPC filesystems
+
           #needs a shell in the container
           # bashInteractive
           # bash_5
