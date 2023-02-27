@@ -17,7 +17,7 @@ self: super:
         #
 
         ##### Development version has features I need. CRAN will catch up eventually
-        wdpar = (super.callPackage ./wdpar_github.nix {});
+        #wdpar = (super.callPackage ./wdpar_github.nix {});
 
 
 
@@ -50,6 +50,7 @@ self: super:
         gradientforest = (super.callPackage ./gradientforest.nix {}); #not in CRAN
         emmix = (super.callPackage ./emmix.nix {}); #not in CRAN
         VoCC = (super.callPackage ./VoCC.nix {});
+        planktonr = (super.callPackage ./planktonr.nix {}); #lab package, not in CRAN yet
 
         ##### Not in cran, and never will be
         ClimateOperators  = (super.callPackage ./climateoperators.nix {}); #not in CRAN
