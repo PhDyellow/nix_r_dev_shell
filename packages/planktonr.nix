@@ -3,7 +3,7 @@ let
   inherit (pkgs) cacert fetchurl stdenv lib;
 
   Rdepends = with pkgs.rPackages; [
-    data.table
+    data_table
     dplyr
     ggplot2
     htmltools
@@ -18,7 +18,7 @@ let
     rlang
     rnaturalearth
     sf
-    stats
+#    stats # r core package
     stringr
     suncalc
     tibble
@@ -55,7 +55,7 @@ RmkDerive {
   owner = "PlanktonTeam";
   repo = "planktonr";
     rev = "c0dc406c460c44eebd60806c96364a8ba7734137";
-    sha256 =  "0000000000000000000000000000000000000000000000000000";
+    sha256 =  "sha256-b12lMIrQHpWXRyrQDQIWTd5X9bKLHSmxEF1bYnldpfU=";
     fetchSubmodules = true;
   };
 

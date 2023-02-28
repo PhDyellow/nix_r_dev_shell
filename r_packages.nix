@@ -66,6 +66,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         #seaaroundus #removed from CRAN
         ncdf4
         mapdata
+        planktonr
 
         #simulated data
         coenocliner
