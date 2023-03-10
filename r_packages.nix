@@ -57,6 +57,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         shinyWidgets
         magick
         markdown
+        httpgd
 
 
         #data sources

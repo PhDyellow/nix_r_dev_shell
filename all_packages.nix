@@ -77,4 +77,18 @@ with pkgs;[
           packages = [
           ] ++ rpackages;
             })
+
+          (vscode-with-extensions.override {
+            vscode = vscodium;
+            vscodeExtensions = with vscode-extensions; [
+            ]
+              ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+              {
+               name = "r";
+                publisher = "REditorSupport";
+                version = "2.7.2";
+                sha256 = "0000000000000000000000000000000000000000000000000000";
+              }
+            ];
+          })
     ]

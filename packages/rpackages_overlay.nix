@@ -55,6 +55,7 @@ self: super:
         ##### Not in cran, and never will be
         ClimateOperators  = (super.callPackage ./climateoperators.nix {}); #not in CRAN
         mvpart = (super.callPackage ./mvpart_github.nix {}); #not in CRAN
+        unigd = (super.callPackage ./unigd_github.nix {}); #not in CRAN
         gurobi = (super.callPackage ./gurobi.nix {});
         nvimcom = (super.callPackage ./nvimcom.nix {}); #Not in CRAN
     };
