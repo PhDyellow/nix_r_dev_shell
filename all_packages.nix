@@ -75,6 +75,6 @@ with pkgs;[
 
           (rstudioWrapper.override {
           packages = [
-          ] ++ rpackageslist;
+          ] ++ rpackages;
             })
     ]

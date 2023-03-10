@@ -6,7 +6,7 @@
 
 let
   name = "r-singularity-aus_bio-shell";
-  rpackages = (import ./r_packages.nix {pkgs = pkgs;}); #already in all_packages, but used here for RStudio
+#  rpackages = (import ./r_packages.nix {pkgs = pkgs;}); #already in all_packages, but used here for RStudio
   allpackages = (import ./all_packages.nix {pkgs = pkgs;});
 in 
 pkgs.mkShell {
