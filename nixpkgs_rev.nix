@@ -11,7 +11,7 @@ import (builtins.fetchGit {
   # rev = "988da51d9c49a1d43fe28a5f92394f5dbc16eede"; #bad
   ref = "refs/heads/master"; #using bleeding edge packages
 
-  rev = "5110d8b6fbc59aecb01dbe4252f8330559a3f9a4";
+  rev = "1e383aada51b416c6c27d4884d2e258df201bc11";
 
 
 
