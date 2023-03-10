@@ -149,6 +149,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         rmarkdown
         knitr
         microbenchmark
+        bench
         assertthat
         pryr
         profvis
@@ -192,6 +193,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         mapview
         remotes
         gridExtra
+        gridGraphics
         lpsymphony
         #Rsymphony
         units

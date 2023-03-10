@@ -64,15 +64,17 @@ with pkgs;[
           chromedriver
           htmlunit-driver
 
-          (pkgs.callPackage ./nix_r_compact_libs.nix {rPa = rpackages;})
+          (pkgs.callPackage ./nix_r_compact_libs.nix {rPa = rpackages;
+                                                      R = pkgs.R.override{
+                                                      enableMemoryProfiling = true;
+                                                      };})
           (rWrapper.override {
               packages = [
               ] ++ rpackages;
             })
 
-          #don't need rStudio, won't run on server anyway
-          # (rstudioWrapper.override {
-          # packages = [
-          # ] ++ rpackageslist;
-          #   })
+          (rstudioWrapper.override {
+          packages = [
+          ] ++ rpackageslist;
+            })
     ]
