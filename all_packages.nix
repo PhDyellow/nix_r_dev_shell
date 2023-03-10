@@ -87,7 +87,7 @@ with pkgs;[
                name = "r";
                 publisher = "REditorSupport";
                 version = "2.7.2";
-                sha256 = "0000000000000000000000000000000000000000000000000000";
+                sha256 = "sha256-D400Z6OvcGHUxxYKjny+bvV/EcSPQ9PeKUUvYfEOBcE=";
               }
             ];
           })
