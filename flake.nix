@@ -12,9 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    r_overlay = {
-      url = "path:/path/to/repo";
-    };
 
   };
 
