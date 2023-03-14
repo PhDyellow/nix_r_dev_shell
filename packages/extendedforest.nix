@@ -13,12 +13,10 @@ let
 
   rev = "9c31980442befcc5d42890d2289ae705b67fe21c";
 
-  RmkDerive = pkgs.callPackage ./rmkderive.nix {
-  };
 
 in
 
-RmkDerive {
+pkgs.RmkDerive {
 
   name = "extended_forest";
 

@@ -12,12 +12,10 @@ let
 
   rev = "0000000000000000000000000000000000000000";
 
-  RmkDerive = pkgs.callPackage ./rmkderive.nix {
-  };
 
 in
 
-RmkDerive {
+pkgs.RmkDerive {
 
   name = "r_gurobi";
 

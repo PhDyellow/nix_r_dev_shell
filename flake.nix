@@ -12,13 +12,35 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    r_overlay = {
+      url = "path:/path/to/repo";
+    };
+
   };
 
   outputs = {self, nixpkgs-unstable, ...}@inputs: {
+#    overlays.r_packages = import ./packages/rpackages_overlay_flake.nix;
 
     devShells."x86_64-linux" = {
       r-shell = let
-        pkgs = import nixpkgs-unstable {system = "x86_64-linux";};
+        pkgs = import nixpkgs-unstable {
+          system = "x86_64-linux";
+          config = {
+            allowUnfree= true;
+            permittedInsecurePackages = [
+              "python-2.7.18.6-env"
+              "python-2.7.18.6"
+            ];
+          };
+          overlays = [
+            (import ./packages/rpackages_overlay_flake.nix)
+            (import ./packages/gurobi_overlay.nix)
+            (import ./packages/phantomjs2_overlay.nix) # Dropped from NixPkgs for being unmaintained and insecure. Needed by wdpar though
+            #(import ./packages/intel_mkl_overlay.nix)
+            #(import ./packages/qemu_overlay.nix)
+          ];
+
+        };
         allpackages = (import ./all_packages.nix {pkgs = pkgs;});
         in
           pkgs.mkShell {

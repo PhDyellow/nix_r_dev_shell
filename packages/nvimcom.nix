@@ -10,12 +10,10 @@ let
 
   rev = "c5e36cb40afd71fb073e3eb5eebdc89f9c2504f7";
 
-  RmkDerive = pkgs.callPackage ./rmkderive.nix {
-  };
 
 in
 
-RmkDerive {
+pkgs.RmkDerive {
 
   name = "nvimcom";
 

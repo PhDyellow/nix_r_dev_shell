@@ -9,12 +9,10 @@ let
   sysdepends = with pkgs;[
   ];
 
-  RmkDerive = pkgs.callPackage ./rmkderive.nix {
-  };
 
 in
 
-RmkDerive {
+pkgs.RmkDerive {
 
   name = "r-emmix-mfa";
 

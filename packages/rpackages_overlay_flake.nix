@@ -3,7 +3,7 @@ self: super:
 #rPackages is a big function that returns a set of nix packages that happen to be r packages
 #rather than trying to remix rPackges with overlays, I can use nixpkgs.config
   #gdal = super.gdal.override {poppler = super.poppler_0_61;};
-  RmkDerive = (super.callPackage ./rmkderive.nix {});
+  RmkDerive = (super.callPackage ./rmkderive_flake.nix {});
   rPackages = super.rPackages.override {
     overrides = {
         #

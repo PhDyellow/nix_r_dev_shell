@@ -13,11 +13,9 @@ let
   ];
 
 
-  RmkDerive = pkgs.callPackage ./rmkderive.nix {};
-
 in
 
-RmkDerive {
+pkgs.RmkDerive {
 
   name = "gfbootstrap";
 

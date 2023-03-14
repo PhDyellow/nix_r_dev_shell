@@ -13,12 +13,10 @@ let
   ];
 
     rev = "918dae09b2ebfdc1c9febc06cf2bd29dfd9cfad4";
-  RmkDerive = pkgs.callPackage ./rmkderive.nix {
-  };
 
 in
 
-RmkDerive {
+pkgs.RmkDerive {
 
   name = "gradient_forest";
 

@@ -15,11 +15,9 @@ let
   ];
 
 
-  RmkDerive = pkgs.callPackage ./rmkderive.nix {};
-
 in
 
-RmkDerive {
+pkgs.RmkDerive {
 
   name = "phil_rutilities";
 
