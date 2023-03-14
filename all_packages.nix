@@ -28,6 +28,8 @@ with pkgs;[
 
           pandoc #needed for rMarkdown
 
+          cario #for httpdg package
+
           #gnutar
           #gzip
           #gnumake
