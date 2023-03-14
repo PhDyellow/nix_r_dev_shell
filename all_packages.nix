@@ -28,7 +28,7 @@ with pkgs;[
 
           pandoc #needed for rMarkdown
 
-          cario #for httpdg package
+          cairo #for httpdg package
 
           #gnutar
           #gzip
