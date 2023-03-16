@@ -1,15 +1,9 @@
-{R, pkgs, util-linux }:
+{R, pkgs, util-linux, buildRPackage }:
 
 
 let
   inherit (pkgs) cacert fetchurl stdenv lib util-linux;
 
-
-  buildRPackage = pkgs.callPackage (nixpkgs-unstable + "pkgs/development/r-modules/generic-builder.nix") {
-    inherit R;
-    inherit (pkgs.darwin.apple_sdk.frameworks) Cocoa Foundation;
-    inherit (pkgs) gettext gfortran;
-  };
 
 in
 

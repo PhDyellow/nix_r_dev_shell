@@ -25,7 +25,7 @@ pkgs.RmkDerive {
 
   src = builtins.fetchGit {
     url = "git@github.com:PhDyellow/rutilities.git";
-    # rev = "f049d3e9ea8d96551a50aa5c67fed8d0e52384be";
+    rev = "3c23cc7e99ddd6ab6b53a737de790c3bce1a6378";
     ref = "develop";
   };
 

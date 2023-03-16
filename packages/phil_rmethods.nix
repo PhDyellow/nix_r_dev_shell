@@ -35,7 +35,7 @@ pkgs.RmkDerive {
 
   src = builtins.fetchGit {
     url = "git@github.com:PhDyellow/rmethods.git";
-  #rev = "81257d565e4076addf75d7062043046c57b1663b";
+  rev = "3b7eb61d6e7ded3ca71789897f69f0cd65f19791";
   ref = "develop";
     };
 
