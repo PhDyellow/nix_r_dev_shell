@@ -43,9 +43,6 @@
             (import ./packages/gurobi_overlay.nix)
             (import ./packages/phantomjs2_overlay.nix) # Dropped from NixPkgs for being unmaintained and insecure. Needed by wdpar though
           ];
-
-          flake_nixpkgs = nixpkgs-unstable;
-
         };
         allpackages = (import ./all_packages.nix {pkgs = pkgs;});
         in
