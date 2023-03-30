@@ -66,10 +66,10 @@ with pkgs;[
           chromedriver
           htmlunit-driver
 
-          (pkgs.callPackage ./nix_r_compact_libs.nix {rPa = rpackages;
-                                                      R = pkgs.R.override{
-                                                      enableMemoryProfiling = true;
-                                                      };})
+          # (pkgs.callPackage ./nix_r_compact_libs.nix {rPa = rpackages;
+          #                                             R = pkgs.R.override{
+          #                                             enableMemoryProfiling = true;
+          #                                             };})
           (rWrapper.override {
               packages = [
               ] ++ rpackages;

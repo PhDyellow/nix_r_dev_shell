@@ -5,6 +5,7 @@ self: super:
   #gdal = super.gdal.override {poppler = super.poppler_0_61;};
   #
   RmkDerive = (super.callPackage ./rmkderive_flake.nix {buildRPackage = self.buildRPackage;});
+  R = super.R.override{enableMemoryProfiling = true;};
   rPackages = super.rPackages.override {
     overrides = {
         #
