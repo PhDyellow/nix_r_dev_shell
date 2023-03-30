@@ -88,6 +88,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         R_devices
         quantreg
         tmap
+        ascii
 
         #Data manipulation
         tidyverse
