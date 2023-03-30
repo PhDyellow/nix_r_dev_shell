@@ -44,7 +44,6 @@
             name = "r-shell";
             version = "1";
             packages = [
-              inputs.r-radian.packages.x86_64-linux.radian
             ];
             buildInputs = allpackages ++ [
             ];
