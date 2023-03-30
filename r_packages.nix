@@ -43,7 +43,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         interp
         akima
         mvpart
-        clusterCrit
+        #clusterCrit #currently broken
         Hotelling
         ICSNP
         rrcov
