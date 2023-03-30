@@ -7,12 +7,6 @@
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
 
-    r-radian = {
-      url = "github:swt30/radian-flake";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
-
   };
 
   outputs = {self, nixpkgs-unstable, ...}@inputs: {

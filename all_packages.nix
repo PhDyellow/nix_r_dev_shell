@@ -75,6 +75,12 @@ with pkgs;[
               ] ++ rpackages;
             })
 
+          (radianWrapper.override{
+            packages = [
+            ] ++ rpackages;
+          })
+
+          
           (rstudioWrapper.override {
           packages = [
           ] ++ rpackages;
