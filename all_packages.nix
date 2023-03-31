@@ -4,7 +4,7 @@ let
   Rwrapped = (rWrapper.override {
               packages = [
               ] ++ rpackages;
-            })
+            });
 in
 with pkgs;[
           #(stdenv.mkDerivation{
@@ -74,10 +74,10 @@ with pkgs;[
           #                                             R = pkgs.R.override{
           #                                             enableMemoryProfiling = true;
           #                                             };})
-          Rwrap
+          Rwrapped
 
           (radianWrapper.override{
-            R = Rwrap;
+            R = Rwrapped;
           })
 
           
