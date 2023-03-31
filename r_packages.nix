@@ -25,6 +25,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         drake
         visNetwork
         networkD3
+        semver
 
         #Maths and statistics
         emmix 
