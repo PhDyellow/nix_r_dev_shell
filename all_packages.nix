@@ -74,10 +74,11 @@ with pkgs;[
           #                                             R = pkgs.R.override{
           #                                             enableMemoryProfiling = true;
           #                                             };})
-          Rwrapped
 
           (radianWrapper.override{
-            R = Rwrapped;
+            packages = [
+            ] ++ rpackages;
+            wrapR = true;
           })
 
           
