@@ -1,6 +1,10 @@
 {pkgs}:
 let
   rpackages = (import ./r_packages.nix { pkgs = pkgs; });
+  Rwrapped = (rWrapper.override {
+              packages = [
+              ] ++ rpackages;
+            })
 in
 with pkgs;[
           #(stdenv.mkDerivation{
@@ -70,14 +74,10 @@ with pkgs;[
           #                                             R = pkgs.R.override{
           #                                             enableMemoryProfiling = true;
           #                                             };})
-          (rWrapper.override {
-              packages = [
-              ] ++ rpackages;
-            })
+          Rwrap
 
           (radianWrapper.override{
-            packages = [
-            ] ++ rpackages;
+            R = Rwrap;
           })
 
           
