@@ -1,7 +1,7 @@
 {pkgs}:
 let
   rpackages = (import ./r_packages.nix { pkgs = pkgs; });
-  Rwrapped = (rWrapper.override {
+  Rwrapped = (pkgs.rWrapper.override {
               packages = [
               ] ++ rpackages;
             });
