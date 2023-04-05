@@ -1,10 +1,6 @@
 {pkgs}:
 let
   rpackages = (import ./r_packages.nix { pkgs = pkgs; });
-  Rwrapped = (pkgs.rWrapper.override {
-              packages = [
-              ] ++ rpackages;
-            });
 in
 with pkgs;[
           #(stdenv.mkDerivation{
