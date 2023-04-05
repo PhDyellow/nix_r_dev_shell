@@ -12,7 +12,7 @@ let
   sysdepends = with pkgs;[
   ];
 
-    rev = "918dae09b2ebfdc1c9febc06cf2bd29dfd9cfad4";
+    rev = "e534d2f91c3828a7eb8ab9bfcf025e65d7868030";
 
 in
 
