@@ -28,7 +28,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         semver
 
         #Maths and statistics
-        emmix 
+        # emmix 
         # EMMIXcskew
         #(pkgs.callPackage ./packages/emmix_mfa.nix {})
         mclust
@@ -43,7 +43,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         tnet
         interp
         akima
-        mvpart
+        # mvpart
         #clusterCrit #currently broken
         Hotelling
         ICSNP
@@ -188,7 +188,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         VoCC
         prioritizr
         prioritizrdata
-        gurobi
+        # gurobi
         slam
         rnaturalearth
         patchwork

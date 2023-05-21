@@ -50,7 +50,7 @@ self: super:
         castcluster = (super.callPackage ./castcluster.nix {});
         gfbootstrap = (super.callPackage ./gfbootstrap.nix {});
         gradientforest = (super.callPackage ./gradientforest.nix {}); #not in CRAN
-        emmix = (super.callPackage ./emmix.nix {}); #not in CRAN
+        # emmix = (super.callPackage ./emmix.nix {}); #not in CRAN
         VoCC = (super.callPackage ./VoCC.nix {});
         planktonr = (super.callPackage ./planktonr.nix {}); #lab package, not in CRAN yet
 
@@ -58,7 +58,7 @@ self: super:
         ClimateOperators  = (super.callPackage ./climateoperators.nix {}); #not in CRAN
         mvpart = (super.callPackage ./mvpart_github.nix {}); #not in CRAN
         unigd = (super.callPackage ./unigd_github.nix {}); #not in CRAN
-        gurobi = (super.callPackage ./gurobi.nix {});
+        # gurobi = (super.callPackage ./gurobi.nix {});
         nvimcom = (super.callPackage ./nvimcom.nix {}); #Not in CRAN
     };
   };

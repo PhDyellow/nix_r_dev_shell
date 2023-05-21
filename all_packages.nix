@@ -47,7 +47,7 @@ with pkgs;[
           # bashInteractive
           # bash_5
 
-          gurobi
+          # gurobi
 
           ## Functions to work with climate data
           cdo
