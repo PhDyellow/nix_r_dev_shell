@@ -34,7 +34,7 @@
           overlays = [
             self.overlays.buildRPackage
             (import ./packages/rpackages_overlay_flake.nix)
-            (import ./packages/gurobi_overlay.nix)
+            # (import ./packages/gurobi_overlay.nix)
             (import ./packages/phantomjs2_overlay.nix) # Dropped from NixPkgs for being unmaintained and insecure. Needed by wdpar though
           ];
         };
