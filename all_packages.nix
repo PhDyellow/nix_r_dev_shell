@@ -1,6 +1,7 @@
 {pkgs}:
 let
   rpackages = (import ./r_packages.nix { pkgs = pkgs; });
+  python-tensorflow = (pkgs.python3.withPackages(ps: with ps; [tensorflow]));
 in
 with pkgs;[
           #(stdenv.mkDerivation{
@@ -70,6 +71,8 @@ with pkgs;[
           #                                             R = pkgs.R.override{
           #                                             enableMemoryProfiling = true;
           #                                             };})
+
+          python-tensorflow
 
           (radianWrapper.override{
             packages = [

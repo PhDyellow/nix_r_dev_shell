@@ -120,6 +120,11 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         snow
         SOAR
         bigmemory
+        GPUmatrix
+        float #float32 matricies are extremely fast on GPU
+        torch
+        tensorflow
+        sqldf
         ff
         clustermq 
         (Rmpi.overrideDerivation(attrs:{
