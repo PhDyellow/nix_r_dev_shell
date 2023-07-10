@@ -23,7 +23,7 @@ pkgs.RmkDerive {
   src = builtins.fetchGit {
     url = "git@github.com:MathMarEcol/CastCluster.git";
     ref = "refs/heads/develop";
-    rev = "15563d1725d0224a591750cce54cf2ce7ce9f007";
+    rev = "51743e7144eaef69483b30c3f7ef0995de345472";
     };
 
 
