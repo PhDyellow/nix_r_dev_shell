@@ -6,6 +6,9 @@ let
   Rdepends = with pkgs.rPackages; [
     gradientforest
     assertthat
+    future.apply
+    ggplot2
+    ggthemes
   ];
 
   sysdepends = with pkgs;[
