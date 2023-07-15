@@ -52,7 +52,9 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         #clustsig # currently broken
         Rfast
         fpc
+        indicspecies
 
+        ## Publishing, static and interactive
         shiny
         DT
         shinythemes
@@ -145,6 +147,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         renv
         callr
 
+        # Storage formats
         qs
         fst
         feather
