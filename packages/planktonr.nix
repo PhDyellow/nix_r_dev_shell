@@ -52,8 +52,8 @@ pkgs.RmkDerive {
   src = pkgs.fetchFromGitHub {
   owner = "PlanktonTeam";
   repo = "planktonr";
-    rev = "c0dc406c460c44eebd60806c96364a8ba7734137";
-    sha256 =  "sha256-b12lMIrQHpWXRyrQDQIWTd5X9bKLHSmxEF1bYnldpfU=";
+  rev = "82076c066b023b8387ba584bbd8a7a72cd99b2d2";
+    sha256 =  "sha256-b12lMIrQHpWXRyrQDQIWTd5X9bKLHSmxEF1bYnldpf0=";
     fetchSubmodules = true;
   };
 
