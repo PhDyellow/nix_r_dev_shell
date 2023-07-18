@@ -25,7 +25,7 @@ pkgs.RmkDerive {
   src = builtins.fetchGit {
     url = "git@github.com:PhDyellow/gradientforestgitsvn.git";
     rev = rev;
-    ref = "svn-rforge-local";
+    ref = "master";
   } + "/pkg/gradientForest";
 
   # src = pkgs.fetchFromGitHub {
