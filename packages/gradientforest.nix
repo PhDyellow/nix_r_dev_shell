@@ -12,7 +12,7 @@ let
   sysdepends = with pkgs;[
   ];
 
-  rev = "053f83cb77f8698b24aacf84c3cae00c09161d8f";
+  rev = "d7119655b7ce015f1c1e80cad9f951f34add7a76";
 
 in
 
@@ -25,7 +25,7 @@ pkgs.RmkDerive {
   src = builtins.fetchGit {
     url = "git@github.com:PhDyellow/gradientforestgitsvn.git";
     rev = rev;
-    ref = "master";
+    ref = "svn-rforge-local";
   } + "/pkg/gradientForest";
 
   # src = pkgs.fetchFromGitHub {
