@@ -94,6 +94,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         tmap
         ascii
         ggh4x
+        fitdistrplus
 
         #Data manipulation
         tidyverse
