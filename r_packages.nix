@@ -93,6 +93,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         quantreg
         tmap
         ascii
+        ggh4x
 
         #Data manipulation
         tidyverse
