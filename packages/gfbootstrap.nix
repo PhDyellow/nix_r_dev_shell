@@ -24,7 +24,7 @@ pkgs.RmkDerive {
   src = builtins.fetchGit {
     url = "git@github.com:MathMarEcol/gfbootstrap.git";
     ref = "refs/heads/develop";
-    rev =  "d58beee0f876fe251f18e90e9d5bd12ba803048e";
+    rev =  "cbc11bb7a61917dbd31d67b18f7b5c9fd8aec33b";
     };
   depends = sysdepends ++ Rdepends;
 }
