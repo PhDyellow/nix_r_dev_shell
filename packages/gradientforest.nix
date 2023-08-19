@@ -12,7 +12,7 @@ let
   sysdepends = with pkgs;[
   ];
 
-  rev = "d7119655b7ce015f1c1e80cad9f951f34add7a76";
+  rev = "2dc964360e006bddacc67cbfcee526078bfed9ca";
 
 in
 
@@ -20,7 +20,7 @@ pkgs.RmkDerive {
 
   name = "gradient_forest";
 
-  version = "0.1.29";
+  version = "0.1.37";
 
   src = builtins.fetchGit {
     url = "git@github.com:PhDyellow/gradientforestgitsvn.git";
