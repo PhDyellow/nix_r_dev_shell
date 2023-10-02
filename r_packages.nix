@@ -62,6 +62,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         magick
         markdown
         httpgd
+        bib2df
 
 
         #data sources
