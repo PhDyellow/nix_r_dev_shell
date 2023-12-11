@@ -82,7 +82,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         #Plotting
         ggthemes
         ggraph
-        maptools
+        # maptools
         ggplot2
         ellipse
         ggcorrplot
