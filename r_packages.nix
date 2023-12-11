@@ -106,7 +106,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         rlist
         lutz
         lubridate
-        ClimateOperators
+        # ClimateOperators
         raster
         terra
         stars
