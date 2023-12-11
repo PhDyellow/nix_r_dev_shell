@@ -89,7 +89,7 @@
         python-tensorflow = pkgs.python310.withPackages(ps: with ps; [
           # tensorflow
           numpy
-          keras
+          # keras
         ]);
           #   env = {
           #     RETICULATE_PYTHON = "${python-tensorflow}";
