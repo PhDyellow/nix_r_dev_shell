@@ -72,7 +72,7 @@ with pkgs;[
           #                                             enableMemoryProfiling = true;
           #                                             };})
 
-          python-tensorflow
+          # python-tensorflow
 
           (radianWrapper.override{
             packages = [
