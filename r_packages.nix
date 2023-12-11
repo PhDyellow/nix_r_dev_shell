@@ -102,7 +102,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         data_table
         sf
         sp
-        rgeos
+        # rgeos
         rlist
         lutz
         lubridate
