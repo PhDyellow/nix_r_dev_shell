@@ -86,8 +86,8 @@
           ];
         };
         allpackages = (import ./all_packages.nix {pkgs = pkgs;
-                                                 python-install = python-tensorflow});
-        python-tensorflow = pkgs.python310.withPackages(ps: with ps; [
+                                                 python-install = python-tensorflow;});
+        python-tensorflow = pkgs.python311.withPackages(ps: with ps; [
           # tensorflow
           numpy
           # keras
@@ -105,8 +105,8 @@
               python-tensorflow
             ];
             shellHook = ''
-              export RETICULATE_PYTHON=${python-tensorflow}/bin/python3.10
-              export PYTHONPATH="${python-tensorflow}/lib/python3.10:${python-tensorflow}/lib/python3.10/site-packages"
+              export RETICULATE_PYTHON=${python-tensorflow}/bin/python3.11
+              export PYTHONPATH="${python-tensorflow}/lib/python3.11:${python-tensorflow}/lib/python3.11/site-packages"
             '';
         };
 
