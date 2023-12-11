@@ -195,7 +195,7 @@ with pkgs.rPackages; [#All  R packages that I use in my code.
         rfishbase
         readr
         kader
-        rgdal
+        # rgdal
         exactextractr
         VoCC
         prioritizr
