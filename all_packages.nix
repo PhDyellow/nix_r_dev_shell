@@ -1,8 +1,8 @@
-{pkgs}:
+{pkgs, python-install}:
 let
   rpackages = (import ./r_packages.nix { pkgs = pkgs; });
-  python-notensorflow = (pkgs.python3.withPackages(ps: with ps; [ ]));
-  python-tensorflow = (pkgs.python3.withPackages(ps: with ps; [tensorflow]));
+  # python-notensorflow = (pkgs.python3.withPackages(ps: with ps; [ ]));
+  # python-tensorflow = (pkgs.python3.withPackages(ps: with ps; [tensorflow]));
 in
 with pkgs;[
           #(stdenv.mkDerivation{
@@ -73,8 +73,8 @@ with pkgs;[
           #                                             enableMemoryProfiling = true;
           #                                             };})
 
-          python-notensorflow
-
+          # python-notensorflow
+          python-install
           (radianWrapper.override{
             packages = [
             ] ++ rpackages;

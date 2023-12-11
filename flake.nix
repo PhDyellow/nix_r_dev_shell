@@ -85,7 +85,8 @@
             (import ./packages/phantomjs2_overlay.nix) # Dropped from NixPkgs for being unmaintained and insecure. Needed by wdpar though
           ];
         };
-        allpackages = (import ./all_packages.nix {pkgs = pkgs;});
+        allpackages = (import ./all_packages.nix {pkgs = pkgs;
+                                                 python-install = python-tensorflow});
         python-tensorflow = pkgs.python310.withPackages(ps: with ps; [
           # tensorflow
           numpy
