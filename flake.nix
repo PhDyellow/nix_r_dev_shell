@@ -87,7 +87,7 @@
         };
         allpackages = (import ./all_packages.nix {pkgs = pkgs;});
         python-tensorflow = pkgs.python310.withPackages(ps: with ps; [
-          tensorflow
+          # tensorflow
           numpy
           keras
         ]);
