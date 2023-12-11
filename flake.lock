@@ -2,15 +2,15 @@
   "nodes": {
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1687910965,
-        "narHash": "sha256-vT6vyGkzsqvR+Zvs7bH33kTBFJZVC5O4XOxMP/0ah8w=",
-        "owner": "PhDyellow",
+        "lastModified": 1698315861,
+        "narHash": "sha256-4FXSyLbbj0JnfKIZFDsUXsE6V3Wz5qCOmuYfoNeCUVw=",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "52c3bf180f685bea1bcc5f670b0d1b0a6196b270",
+        "rev": "b0a0f9856dfdc2348520e4b152ec77e5e7a44858",
         "type": "github"
       },
       "original": {
-        "owner": "PhDyellow",
+        "owner": "NixOS",
         "ref": "r-updates",
         "repo": "nixpkgs",
         "type": "github"
