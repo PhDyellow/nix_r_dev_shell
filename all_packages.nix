@@ -52,7 +52,7 @@ with pkgs;[
 
           ## Functions to work with climate data
           cdo
-          nco
+          # nco
 
           curl
           wget
