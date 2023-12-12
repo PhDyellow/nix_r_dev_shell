@@ -11,7 +11,7 @@ let
   sysdepends = with pkgs;[
   ];
 
-  rev = "9c31980442befcc5d42890d2289ae705b67fe21c";
+  rev = "721a8ecd5bee4f9440325412fce4aac8db1862b9";
 
 
 in
@@ -20,12 +20,12 @@ pkgs.RmkDerive {
 
   name = "extended_forest";
 
-  version = "1.6.1";
+  version = "1.6.2";
 
   src = pkgs.fetchFromGitHub {
     owner = "rforge";
     repo = "gradientforest";
-    sha256 = "1c5ap24b54fxpsl16ad8w4vphnick7kwjjakk2bdmjxr5zykfrcv";
+    sha256 = "sha256-402JEGiKay3HDIAiCR1Kp9bs2mDgxXZZXYYEPAVcEbQ=";
     rev = rev;
   } + "/pkg/extendedForest";
 
