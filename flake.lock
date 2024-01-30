@@ -2,11 +2,11 @@
   "nodes": {
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1706594556,
-        "narHash": "sha256-HUaqTpAYUTVnKiKF9dBP7ow2+sM2Pf9MTyqQC4lYrzA=",
+        "lastModified": 1706595046,
+        "narHash": "sha256-+Wl5PzLwY598kzW4MlBlpo+lSbodyx6B7SjR16p+6EU=",
         "owner": "PhDyellow",
         "repo": "nixpkgs",
-        "rev": "45d1838148c27e39cec65cc2a81f7d97c0bd73a1",
+        "rev": "77aa1448dd2a2bcaa221167092f37883789d7472",
         "type": "github"
       },
       "original": {
