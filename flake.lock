@@ -2,16 +2,16 @@
   "nodes": {
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1705566969,
-        "narHash": "sha256-tb9BnRNrH9Q9buh/3tTmAQswsK+6Wxm7jRVgLZLrztc=",
+        "lastModified": 1706594556,
+        "narHash": "sha256-HUaqTpAYUTVnKiKF9dBP7ow2+sM2Pf9MTyqQC4lYrzA=",
         "owner": "PhDyellow",
         "repo": "nixpkgs",
-        "rev": "ca71fb479689bf00cde05a6eaf9857095d531003",
+        "rev": "45d1838148c27e39cec65cc2a81f7d97c0bd73a1",
         "type": "github"
       },
       "original": {
         "owner": "PhDyellow",
-        "ref": "r-torch-master",
+        "ref": "r-torch-master-12",
         "repo": "nixpkgs",
         "type": "github"
       }

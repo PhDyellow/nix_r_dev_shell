@@ -9,7 +9,7 @@
       # url = "github:PhDyellow/nixpkgs?rev=1b886e9f282c1d912ab233883f345c2d65c15964";
       # url = "github:PhDyellow/nixpkgs/r-updates";
       # url = "github:NixOS/nixpkgs/r-updates";
-      url = "github:PhDyellow/nixpkgs/r-torch-master";
+      url = "github:PhDyellow/nixpkgs/r-torch-master-12";
     };
 
   };
