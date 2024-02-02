@@ -40,8 +40,8 @@
 
           ## Only enable one of these. Nix will choose the last uncommented version
           ## Caching works if all are commented out
-          # self.overlays.blas-lapack-mkl
-          self.overlays.blas-lapack-amd
+           self.overlays.blas-lapack-mkl
+          # self.overlays.blas-lapack-amd
           # self.overlays.blas-lapack-open
           (import ./packages/rpackages_overlay_flake.nix)
           # (import ./packages/gurobi_overlay.nix)
