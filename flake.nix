@@ -100,7 +100,9 @@
 
 
         containers."x86_64-Linux" = {
-          aus_bio_apptainer_r = {
+          ## Build with:
+          ## nix build .#containers.x86_64-Linux.aus_bio_apptainer_r -o /tmp/r-apptainer-aus-bio.sif
+          aus_bio_apptainer_r =
             pkgs.singularity-tools.buildImage {
               singularity = "apptainer";
               name = "aus_bio_apptainer_r";
