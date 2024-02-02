@@ -120,7 +120,7 @@
                 echo "export RETICULATE_PYTHON=${python-tensorflow}/bin/python3.11" >> /.apptainer.d/env/91-environment.sh
                 echo "export PYTHONPATH=${python-tensorflow}/lib/python3.11:${python-tensorflow}/lib/python3.11/site-packages" >> /.apptainer.d/env/91-environment.sh
 
-                echo "export SSL_CERT_FILE=${cacert}/etc/ssl/certs/ca-bundle.crt" >> /.apptainer.d/env/91-environment.sh
+                echo "export SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" >> /.apptainer.d/env/91-environment.sh
                 chmod ugo+x /.apptainer.d/env/91-environment.sh
                 touch /.apptainer.d/env/94-appbase.sh
                 chmod ugo+x /.apptainer.d/env/94-appbase.sh
@@ -135,9 +135,9 @@
                 mkdir -p /groups
 
                 mkdir -p /bin
-                ln -s ${runtimeShell} /bin/bash
+                ln -s ${pkgs.runtimeShell} /bin/bash
               '';
-            };
+
           };
         };
 
