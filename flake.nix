@@ -81,10 +81,10 @@
           # Best for AMD cpus
           blas-lapack-amd = final: prev: {
             blas = prev.blas.override {
-              blasProvider = final.amd-blis;
+              blasProvider = prev.amd-blis.override{blas64=true;};
             };
             lapack = prev.lapack.override {
-              lapackProvider = final.amd-libflame;
+              lapackProvider = prev.amd-libflame.override{blas64 = true;} ;
             };
           };
           # Best for intel cpus
