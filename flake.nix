@@ -14,105 +14,151 @@
 
   };
 
-  outputs = {self, nixpkgs-unstable, ...}@inputs: {
-    overlays = {
-      buildRPackage = final: prev: {
-        buildRPackage = prev.callPackage (nixpkgs-unstable + "/pkgs/development/r-modules/generic-builder.nix") {
-          inherit (final.pkgs) R;
-          inherit (final.pkgs.darwin.apple_sdk.frameworks) Cocoa Foundation;
-          inherit (final.pkgs) gettext gfortran;
-        };
-      };
 
-      # Best for open source
-      blas-lapack-open = final: prev: {
-        blas = prev.blas.override {
-          blasProvider = final.openblas;
+  outputs = {self, nixpkgs-unstable, ...}@inputs:
+    let
+      pkgs = import nixpkgs-unstable {
+        system = "x86_64-linux";
+        config = {
+          allowUnfree= true;
+          # permittedInsecurePackages = [
+          # "python-2.7.18.6-env"
+          # "python-2.7.18.6"
+          # ];
+          hardware.opengl = {
+            enable = true;
+            setLdLibraryPath = true;
+          };
+          cudaSupport = true;
+          nix.settings = {
+            substituters = ["https://cuda-maintainers.cachix.org"];
+            trusted-public-keys = ["cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="];
+          };
         };
-        lapack = prev.lapack.override {
-          lapackProvider = final.openblas;
-        };
-      };
-      # Best for AMD cpus
-      blas-lapack-amd = final: prev: {
-        blas = prev.blas.override {
-          blasProvider = final.amd-blis;
-        };
-        lapack = prev.lapack.override {
-          lapackProvider = final.amd-libflame;
-        };
-      };
-      # Best for intel cpus
-      blas-lapack-mkl = final: prev: {
-        blas = prev.blas.override {
-          blasProvider = final.mkl;
-        };
-        lapack = prev.lapack.override {
-          lapackProvider = final.mkl;
-        };
-      };
-    };
+        overlays = [
+          self.overlays.buildRPackage
 
-    devShells."x86_64-linux" = {
-      r-shell = let
-        pkgs = import nixpkgs-unstable {
-          system = "x86_64-linux";
-          config = {
-            allowUnfree= true;
-            # permittedInsecurePackages = [
-              # "python-2.7.18.6-env"
-              # "python-2.7.18.6"
-            # ];
-            hardware.opengl = {
-              enable = true;
-              setLdLibraryPath = true;
-            };
-            cudaSupport = true;
-            nix.settings = {
-              substituters = ["https://cuda-maintainers.cachix.org"];
-              trusted-public-keys = ["cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="];
+          ## Only enable one of these. Nix will choose the last uncommented version
+          ## Caching works if all are commented out
+          # self.overlays.blas-lapack-mkl
+          self.overlays.blas-lapack-amd
+          # self.overlays.blas-lapack-open
+          (import ./packages/rpackages_overlay_flake.nix)
+          # (import ./packages/gurobi_overlay.nix)
+          (import ./packages/phantomjs2_overlay.nix) # Dropped from NixPkgs for being unmaintained and insecure. Needed by wdpar though
+        ];
+      };
+      allpackages = (import ./all_packages.nix {pkgs = pkgs;
+                                                python-install = python-tensorflow;});
+      python-tensorflow = pkgs.python311.withPackages(ps: with ps; [
+        # tensorflow
+        numpy
+        # keras
+      ]);
+      #   env = {
+      #     RETICULATE_PYTHON = "${python-tensorflow}";
+      #   };
+    in
+      {
+        overlays = {
+          buildRPackage = final: prev: {
+            buildRPackage = prev.callPackage (nixpkgs-unstable + "/pkgs/development/r-modules/generic-builder.nix") {
+              inherit (final.pkgs) R;
+              inherit (final.pkgs.darwin.apple_sdk.frameworks) Cocoa Foundation;
+              inherit (final.pkgs) gettext gfortran;
             };
           };
-          overlays = [
-            self.overlays.buildRPackage
 
-            ## Only enable one of these. Nix will choose the last uncommented version
-            ## Caching works if all are commented out
-            # self.overlays.blas-lapack-mkl
-            # self.overlays.blas-lapack-amd
-            # self.overlays.blas-lapack-open
-            (import ./packages/rpackages_overlay_flake.nix)
-            # (import ./packages/gurobi_overlay.nix)
-            (import ./packages/phantomjs2_overlay.nix) # Dropped from NixPkgs for being unmaintained and insecure. Needed by wdpar though
-          ];
+          # Best for open source
+          blas-lapack-open = final: prev: {
+            blas = prev.blas.override {
+              blasProvider = final.openblas;
+            };
+            lapack = prev.lapack.override {
+              lapackProvider = final.openblas;
+            };
+          };
+          # Best for AMD cpus
+          blas-lapack-amd = final: prev: {
+            blas = prev.blas.override {
+              blasProvider = final.amd-blis;
+            };
+            lapack = prev.lapack.override {
+              lapackProvider = final.amd-libflame;
+            };
+          };
+          # Best for intel cpus
+          blas-lapack-mkl = final: prev: {
+            blas = prev.blas.override {
+              blasProvider = final.mkl;
+            };
+            lapack = prev.lapack.override {
+              lapackProvider = final.mkl;
+            };
+          };
         };
-        allpackages = (import ./all_packages.nix {pkgs = pkgs;
-                                                 python-install = python-tensorflow;});
-        python-tensorflow = pkgs.python311.withPackages(ps: with ps; [
-          # tensorflow
-          numpy
-          # keras
-        ]);
-          #   env = {
-          #     RETICULATE_PYTHON = "${python-tensorflow}";
-          #   };
-      in
-          pkgs.mkShell {
-            name = "r-shell";
-            version = "1";
-            packages = [
-            ];
-            buildInputs = allpackages ++ [
-              python-tensorflow
-            ];
-            shellHook = ''
-              export RETICULATE_PYTHON=${python-tensorflow}/bin/python3.11
-              export PYTHONPATH="${python-tensorflow}/lib/python3.11:${python-tensorflow}/lib/python3.11/site-packages"
+
+
+        containers."x86_64-Linux" = {
+          aus_bio_apptainer_r = {
+            pkgs.singularity-tools.buildImage {
+              singularity = "apptainer";
+              name = "aus_bio_apptainer_r";
+              contents = allpackages ++ [
+                python-tensorflow
+              ];
+              diskSize = 14192;
+              runAsRoot = ''
+                mkdir -p /etc
+                touch /etc/passwd
+                echo "root:x:0:0:System administrator:/root:/bin/sh" > /etc/passwd
+                touch /etc/group
+                echo "root:x:0:" > /etc/group
+                mkdir -p /.apptainer.d
+                mkdir -p /.apptainer.d/env
+                echo "export LC_ALL=C" >> /.apptainer.d/env/91-environment.sh
+                echo "export RETICULATE_PYTHON=${python-tensorflow}/bin/python3.11" >> /.apptainer.d/env/91-environment.sh
+                echo "export PYTHONPATH=${python-tensorflow}/lib/python3.11:${python-tensorflow}/lib/python3.11/site-packages" >> /.apptainer.d/env/91-environment.sh
+
+                echo "export SSL_CERT_FILE=${cacert}/etc/ssl/certs/ca-bundle.crt" >> /.apptainer.d/env/91-environment.sh
+                chmod ugo+x /.apptainer.d/env/91-environment.sh
+                touch /.apptainer.d/env/94-appbase.sh
+                chmod ugo+x /.apptainer.d/env/94-appbase.sh
+
+                mkdir -p /opt
+                # mkdir -p /etc/localtime #this is actually a symlink to another directory. don't hardcode it
+                # mkdir -p /etc/hosts #already done by apptainer in version 3.5+
+                mkdir -p /scratch
+                mkdir -p /QRISdata
+                mkdir -p /sw
+                mkdir -p /sw7
+                mkdir -p /groups
+
+                mkdir -p /bin
+                ln -s ${runtimeShell} /bin/bash
+              '';
+            };
+          };
+        };
+
+        devShells."x86_64-linux" = {
+          r-shell =
+            pkgs.mkShell {
+              name = "r-shell";
+              version = "1";
+              packages = [
+              ];
+              buildInputs = allpackages ++ [
+                python-tensorflow
+              ];
+              shellHook = ''
+                export RETICULATE_PYTHON=${python-tensorflow}/bin/python3.11
+                export PYTHONPATH="${python-tensorflow}/lib/python3.11:${python-tensorflow}/lib/python3.11/site-packages"
             '';
+            };
+
+
+
         };
-
-
-
       };
-    };
 }
