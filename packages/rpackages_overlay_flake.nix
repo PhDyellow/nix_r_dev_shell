@@ -5,7 +5,12 @@ self: super:
   #gdal = super.gdal.override {poppler = super.poppler_0_61;};
   #
   RmkDerive = (super.callPackage ./rmkderive_flake.nix {buildRPackage = self.buildRPackage;});
-  R = super.R.override{enableMemoryProfiling = true;};
+  R = super.R.overrideAttrs (_: {enableMemoryProfiling = true;
+                                 ## Needed for R to pass checks when compiled
+                                 ## with GCC and different BLAS/LAPACK libraries
+                                 MKL_THREADING_LAYER="GNU";
+                                 MKL_INTERFACE_LAYER="GNU,LP64";
+                                });
   rPackages = super.rPackages.override {
     overrides = {
         #
