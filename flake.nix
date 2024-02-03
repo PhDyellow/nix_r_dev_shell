@@ -40,8 +40,8 @@
 
           ## Only enable one of these. Nix will choose the last uncommented version
           ## Caching works if all are commented out
-           self.overlays.blas-lapack-mkl
-          # self.overlays.blas-lapack-amd
+          # self.overlays.blas-lapack-mkl
+           # self.overlays.blas-lapack-amd ## R doesn't pass tests
           # self.overlays.blas-lapack-open
           (import ./packages/rpackages_overlay_flake.nix)
           # (import ./packages/gurobi_overlay.nix)
@@ -79,12 +79,24 @@
             };
           };
           # Best for AMD cpus
+          # Produces errors in R prcomp and does not
+          # install
+          # with or without threading support
+          # blas64=true does not help
           blas-lapack-amd = final: prev: {
             blas = prev.blas.override {
-              blasProvider = prev.amd-blis.override{blas64=true;};
+              # blasProvider = final.amd-blis;
+              blasProvider = prev.amd-blis.override{
+                # blas64=true;
+                # withOpenMP=false;
+              };
             };
             lapack = prev.lapack.override {
-              lapackProvider = prev.amd-libflame.override{blas64 = true;} ;
+              # lapackProvider = final.amd-libflame;
+              lapackProvider = prev.amd-libflame.override{
+                # blas64 = true;
+                # withOpenMP=false;
+              };
             };
           };
           # Best for intel cpus
