@@ -37,7 +37,7 @@
         };
         overlays = [
           self.overlays.buildRPackage
-
+          self.overlays.disable_debugpychecks
           ## Only enable one of these. Nix will choose the last uncommented version
           ## Caching works if all are commented out
           # self.overlays.blas-lapack-mkl
@@ -108,6 +108,17 @@
               lapackProvider = final.mkl;
             };
           };
+
+          disable_debugpychecks = final: prev: {
+            python311 = prev.python311.override {
+              packageOverrides = pyfinal: pyprev: {
+                debugpy = pyprev.debugpy.overridePythonAttrs (_: {
+                  doCheck = false;
+                });
+              };
+            };
+          };
+
         };
 
 
