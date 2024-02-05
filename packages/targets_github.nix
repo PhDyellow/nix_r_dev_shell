@@ -35,7 +35,7 @@ pkgs.RmkDerive {
     owner = "ropensci";
     repo = "targets";
     rev = "b9e22202fbd24f7341714b287954a782716dfa0e";
-    sha256 =  lib.fakeHash;
+    sha256 =  "sha256-ORwAaQ/6xttabA+5wN10AVyVGWsHSWXx6pMuA1Ksegk=";
     fetchSubmodules = true;
   };
 
