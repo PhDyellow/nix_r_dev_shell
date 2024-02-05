@@ -23,6 +23,8 @@ self: super:
         #    prioritizr = (super.callPackage ./prioritizr_github.nix {});
       targets = (super.callPackage ./targets_github.nix {});
       secretbase = (super.callPackage ./secretbase_github.nix {});
+      igraph = (super.callPackage ./igraph_github.nix {});
+
 
         ##### Development version has features I need. CRAN will catch up eventually
         #wdpar = (super.callPackage ./wdpar_github.nix {});
