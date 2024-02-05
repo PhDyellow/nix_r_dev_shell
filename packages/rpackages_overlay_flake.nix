@@ -22,6 +22,7 @@ self: super:
         #sf = (super.callPackage ./sf_github.nix {});
         #    prioritizr = (super.callPackage ./prioritizr_github.nix {});
       targets = (super.callPackage ./targets_github.nix {});
+      crew = (super.callPackage ./crew_github.nix {});
       secretbase = (super.callPackage ./secretbase_github.nix {});
       igraph = (super.callPackage ./igraph_github.nix {});
 
