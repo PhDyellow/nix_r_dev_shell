@@ -164,7 +164,8 @@
               packages = [
               ];
               buildInputs = allpackages ++ [
-                python-tensorflow
+                # python-tensorflow
+
               ];
               shellHook = ''
                 export RETICULATE_PYTHON=${python-tensorflow}/bin/python3.11
