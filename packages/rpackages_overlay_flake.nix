@@ -25,7 +25,8 @@ self: super:
       crew = (super.callPackage ./crew_github.nix {});
       secretbase = (super.callPackage ./secretbase_github.nix {});
       igraph = (super.callPackage ./igraph_github.nix {});
-
+      mirai = (super.callPackage ./mirai_github.nix {});
+      nanonext = (super.callPackage ./nanonext_github.nix {});
 
         ##### Development version has features I need. CRAN will catch up eventually
         #wdpar = (super.callPackage ./wdpar_github.nix {});
