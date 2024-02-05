@@ -148,27 +148,9 @@
                 mkdir -p /.singularity.d/env
                 #echo "#!/usr/env/bin sh" >> /.singularity.d/env/90-environment.sh
                 echo "export LC_ALL=C" >> /.singularity.d/env/90-environment.sh
+                echo "export SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" >> /.singularity.d/env/90-environment.sh
                 # echo "export RETICULATE_PYTHON=${python-tensorflow}/bin/python3.11" >> /.singularity.d/env/90-environment.sh
                 # echo "export PYTHONPATH=${python-tensorflow}/lib/python3.11:${python-tensorflow}/lib/python3.11/site-packages" >> /.singularity.d/env/90-environment.sh
-
-                echo "export SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" >> /.singularity.d/env/90-environment.sh
-                # chmod ugo+x /.singularity.d/env/90-environment.sh
-                # touch /.singularity.d/env/94-appsbase.sh
-                # echo "#!/usr/env/bin sh" >> /.singularity.d/env/94-appsbase.sh
-
-                # chmod ugo+x /.singularity.d/env/94-appsbase.sh
-
-                # mkdir -p /opt
-                # mkdir -p /etc/localtime #this is actually a symlink to another directory. don't hardcode it
-                # mkdir -p /etc/hosts #already done by apptainer in version 3.5+
-                mkdir -p /scratch
-                mkdir -p /QRISdata
-                mkdir -p /sw
-                mkdir -p /sw7
-                mkdir -p /groups
-
-                # mkdir -p /bin
-                # ln -s ${pkgs.runtimeShell} /bin/bash
               '';
 
           };
