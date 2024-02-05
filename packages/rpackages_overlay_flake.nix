@@ -21,7 +21,7 @@ self: super:
         #curveDepthtemp = (super.callPackage ./curveDepthtemp.nix {});
         #sf = (super.callPackage ./sf_github.nix {});
         #    prioritizr = (super.callPackage ./prioritizr_github.nix {});
-        #
+      targets = (super.callPackage ./targets_github.nix {});
 
         ##### Development version has features I need. CRAN will catch up eventually
         #wdpar = (super.callPackage ./wdpar_github.nix {});
