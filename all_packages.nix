@@ -42,6 +42,8 @@ with pkgs;[
           #glibcLocales
 
           which #explicity include which that R compiled against, rather than fall back to system `which``, for some reason the Rshell which and system which are not identical
+          less
+
 
           _7zz # used by shell scripts to minimise small files on HPC filesystems
 
