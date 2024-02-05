@@ -32,7 +32,7 @@ pkgs.RmkDerive {
     owner = "wlandau";
     repo = "crew";
     rev = "f0f6197ee461e5ca53d4098bc845c4a1f79cbc6d";
-    sha256 =  "sha256-ORwAaQ/7xttabA+5wN10AVyVGWsHSWXx6pMuA1Ksegk=";
+    sha256 =  "sha256-YjnshZXQ+ccETFYlCaT1z2k1FE3kglRDyk1QbokKhlA=";
     fetchSubmodules = true;
   };
 
