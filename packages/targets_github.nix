@@ -17,6 +17,7 @@ let
     tidyselect
     vctrs
     yaml
+    secretbase
   ];
 
   sysdepends = with pkgs;[
