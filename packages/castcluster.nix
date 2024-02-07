@@ -23,12 +23,13 @@ pkgs.RmkDerive {
 
   version = "0.0.0.9000";
 
-  src = builtins.fetchGit {
-    url = "git@github.com:MathMarEcol/CastCluster.git";
-    ref = "refs/heads/develop";
+  src = pkgs.fetchFromGitHub {
+    owner = "MathMarEcol";
+    repo = "CastCluster";
     rev = "c26edf04cc0a48f9daa158a053ba004a6fe816dc";
-    };
-
+    sha256 =  "sha256-30f8Cd7xii9MgY5ubjMepAzcXJY8WpIxtaCG3vMoJhA=";
+    fetchSubmodules = true;
+  };
 
   depends = sysdepends ++ Rdepends;
 

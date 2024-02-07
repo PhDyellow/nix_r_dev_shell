@@ -23,10 +23,12 @@ pkgs.RmkDerive {
 
   version = "0.0.0.9000";
 
-  src = builtins.fetchGit {
-    url = "git@github.com:PhDyellow/rutilities.git";
-    rev = "3c23cc7e99ddd6ab6b53a737de790c3bce1a6378";
-    ref = "develop";
+  src = pkgs.fetchFromGitHub {
+    owner = "PhDyellow";
+    repo = "rutilities";
+    rev = "ff62709d2086d87287f490f38d50b71f7093dd72";
+    sha256 = "sha256-9SzbC52DkabfzRf+QcikFLIBLF8mag2efpodJGf6LYs=";
+    fetchSubmodules = true;
   };
 
   depends = sysdepends ++ Rdepends;

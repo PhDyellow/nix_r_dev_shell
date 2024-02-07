@@ -21,10 +21,13 @@ pkgs.RmkDerive {
 
   version = "0.0.0.9000";
 
-  src = builtins.fetchGit {
-    url = "git@github.com:MathMarEcol/gfbootstrap.git";
-    ref = "refs/heads/develop";
-    rev =  "32c82e2cb418a2e16735bce738199461a3f9bdc8";
-    };
+  src = pkgs.fetchFromGitHub {
+    owner = "MathMarEcol";
+    repo = "gfbootstrap";
+    rev = "32c82e2cb418a2e16735bce738199461a3f9bdc8";
+    sha256 = "sha256-WY6TNrjAwNS2F+NqvLwE2UDBvzuMPw3lbhscO4kgsTI=";
+    fetchSubmodules = true;
+  };
+
   depends = sysdepends ++ Rdepends;
 }

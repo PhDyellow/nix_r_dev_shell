@@ -33,11 +33,13 @@ pkgs.RmkDerive {
 
   version = "0.0.0.9000";
 
-  src = builtins.fetchGit {
-    url = "git@github.com:PhDyellow/rmethods.git";
-  rev = "3b7eb61d6e7ded3ca71789897f69f0cd65f19791";
-  ref = "develop";
-    };
+  src = pkgs.fetchFromGitHub {
+    owner = "PhDyellow";
+    repo = "rmethods";
+    rev = "bd38f24a7e927dc483d923b847c6d21c38121463";
+    sha256 = "sha256-OwlPtEvfZMUe6E8rzFQW4seJNhIE/zkREmk3nBKvslw=";
+    fetchSubmodules = true;
+  };
 
   depends = sysdepends ++ Rdepends;
 

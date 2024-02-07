@@ -14,6 +14,13 @@ let
 
   rev = "51f71459ed866d7a5de1265f1c27e0de689f1abc";
 
+  repo = pkgs.fetchFromGitHub {
+    owner = "PhDyellow";
+    repo = "gradientforestgitsvn";
+    sha256 = "sha256-8U0Fbw82uUEwiBU1TzQAclxPay2qk1gU28hgdpDTAJc=";
+    rev = rev;
+  };
+
 in
 
 pkgs.RmkDerive {
@@ -22,20 +29,7 @@ pkgs.RmkDerive {
 
   version = "0.1.37";
 
-  src = builtins.fetchGit {
-    url = "https://github.com/PhDyellow/gradientforestgitsvn.git";
-    rev = rev;
-    ref = "master";
-  } + "/pkg/gradientForest";
-
-  # src = pkgs.fetchFromGitHub {
-  #   owner = "PhDyellow";
-  #   repo = "gradientforestgitsvn";
-  #   sha256 = "07myvj402zrby2y8s6lyia2pkdsv82kg44w7jla63bywa8m0y2cs";
-  #   rev = rev;
-  # } + "/pkg/gradientForest";
-
+  src = "${repo}/pkg/gradientForest";
   rev = rev;
-
   depends = sysdepends ++ Rdepends;
 }
