@@ -26,8 +26,8 @@ pkgs.RmkDerive {
   src = pkgs.fetchFromGitHub {
     owner = "PhDyellow";
     repo = "rphildyerphd";
-    rev = "64c852f132e81722f11c387b9904d644930e22c4";
-    sha256 = "sha256-lBCCg8jwf/5rlgIz9m18h895HWkwvMTRaewkpQn5acw=";
+    rev = "24f2750f323013e6f69ddd10e25dfa513d7c1080";
+    sha256 = "sha256-fbfcR9k/o4Z6E8hPpaLvpDY8Sf1RWMcTV94Pe/ZXLv4=";
     fetchSubmodules = true;
   };
 
