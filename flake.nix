@@ -12,6 +12,10 @@
       url = "github:PhDyellow/nixpkgs/r-torch-master-12";
     };
 
+    nix-gl-host = {
+      url = "github:numtide/nix-gl-host";
+    };
+
   };
 
 
@@ -131,6 +135,7 @@
               name = "aus_bio_apptainer_r";
               contents = [
                 # pkgs.slurm ## Doesn't help, slurm needs access to configs and databases
+                inputs.nix-gl-host.defaultPackage.x86_64-linux
               ] ++ allpackages;
               # ++ [
               #   python-tensorflow
@@ -165,6 +170,7 @@
               ];
               buildInputs = allpackages ++ [
                 # python-tensorflow
+                inputs.nix-gl-host.defaultPackage.x86_64-linux
 
               ];
               shellHook = ''
@@ -172,9 +178,6 @@
                 export PYTHONPATH="${python-tensorflow}/lib/python3.11:${python-tensorflow}/lib/python3.11/site-packages"
             '';
             };
-
-
-
         };
       };
 }
