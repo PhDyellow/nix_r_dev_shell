@@ -14,6 +14,7 @@
 
     nix-gl-host = {
       url = "github:numtide/nix-gl-host";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
   };
