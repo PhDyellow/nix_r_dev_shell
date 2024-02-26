@@ -70,6 +70,7 @@ with pkgs;[
           chromedriver
           htmlunit-driver
 
+          squashfsTools
           # (pkgs.callPackage ./nix_r_compact_libs.nix {rPa = rpackages;
           #                                             R = pkgs.R.override{
           #                                             enableMemoryProfiling = true;
