@@ -55,6 +55,8 @@
       };
       allpackages = (import ./all_packages.nix {pkgs = pkgs;
                                                 python-install = python-tensorflow;});
+      rpackages = (import ./r_packages.nix { pkgs = pkgs; });
+
       python-tensorflow = pkgs.python311.withPackages(ps: with ps; [
         # tensorflow
         numpy
@@ -126,6 +128,127 @@
 
         };
 
+        packages."x86_64-linux" = {
+          r_with_packages_test = pkgs.rWrapper.override {
+            packages = rpackages;
+          };
+
+          radian_with_packages =
+            pkgs.stdenv.mkDerivation {
+              name = "radian_contained";
+              buildInputs = allpackages ++ [
+                # python-tensorflow
+                inputs.nix-gl-host.defaultPackage.x86_64-linux
+
+              ];
+              meta.mainProgram = "radian";
+              dontUnpack = true;
+              dontConfigure = true;
+              dontPatch = true;
+              dontBuild = true;
+            };
+          r_shell_app = pkgs.symlinkJoin {
+            name = "r_as_sym_set";
+            paths = allpackages;
+          };
+        };
+
+        apps."x86_64-linux" = {
+          r_shell_wrapped = {
+            type = "app";
+            program = "${self.packages.x86_64-linux.r_shell_app}/bin/bash";
+          };
+
+
+
+          R_with_packages = {
+            type = "app";
+            program = pkgs.stdenv.mkDerivation {
+              name = "R_with_packages";
+
+              version = "1";
+              packages = [
+              ];
+              buildInputs = allpackages ++ [
+                # python-tensorflow
+                inputs.nix-gl-host.defaultPackage.x86_64-linux
+
+              ];
+
+              meta.mainProgram = "radian";
+
+            };
+          };
+
+              
+
+
+              
+
+              ## This needs to be a binary in a store path.
+              ## I need to generate an R binary (wrapped) with the appropriate environment, without relying on a shell.
+             #  "${(pkgs.radianWrapper.overrideAttrs (_: {
+          #       buildInputs = with pkgs; [
+          #         bashInteractive
+
+          #                   binutils
+          # coreutils
+          # util-linux
+          # inetutils
+
+          # pandoc #needed for rMarkdown
+
+          # cairo #for httpdg package
+
+          # #gnutar
+          # #gzip
+          # #gnumake
+          # #gcc
+          # #gawk
+          # #gnused
+          # #glibc
+          # #glibcLocales
+
+          # which #explicity include which that R compiled against, rather than fall back to system `which``, for some reason the Rshell which and system which are not identical
+          # less
+
+
+          # _7zz # used by shell scripts to minimise small files on HPC filesystems
+
+          # #needs a shell in the container
+          # # bashInteractive
+          # # bash_5
+
+          # # gurobi
+
+          # ## Functions to work with climate data
+          # cdo
+          # # nco
+
+          # curl
+          # wget
+          # openssh
+          # openssl
+          # iputils
+          # cacert
+
+          # phantomjs2 ## hack for wdman, needed by wdpar. Dropped wdpar because nix no longer supports phantomjs
+          # #also hack for wdman, should pull in selenium
+          # selenium-server-standalone
+          # chromedriver
+          # htmlunit-driver
+
+          # squashfsTools
+
+          #       ] ++ _.buildInputs ++ allpackages;
+          #       })).override {
+          #       packages = [
+          #       ] ++ rpackages;
+          #       wrapR = true;
+          #       }}/bin/R";
+
+          # };
+        };
 
         containers."x86_64-Linux" = {
           ## Build with:
